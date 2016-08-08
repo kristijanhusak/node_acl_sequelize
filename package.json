@@ -1,0 +1,37 @@
+{
+  "name": "acl-sequelize-backend",
+  "version": "0.0.1",
+  "description": "A Sequelize.js backend for node_acl",
+  "keywords": [
+    "middleware",
+    "acl",
+    "web",
+    "sequelize",
+    "postgres"
+  ],
+  "repository": "git@github.com:kristijanhusak/node_acl_sequelize.git",
+  "author": "Kristijan Husak <husakkristijan@gmail.com>",
+  "homepage": "https://github.com/kristijanhusak/node_acl_sequelize",
+  "engines": {
+    "node": ">= 0.4.1"
+  },
+  "main": "./index.js",
+  "dependencies": {
+    "async": "^0.9.0",
+    "knex": "0.6.22",
+    "lodash": "^2.4.1",
+    "sequelize": "^3.23.6",
+    "pg": "3.4.0"
+  },
+  "devDependencies": {
+    "acl": "^0.4.9",
+    "chai": "^1.9.1",
+    "coveralls": "^2.11.1",
+    "istanbul": "^0.3.0",
+    "mocha": "^1.21.3"
+  },
+  "scripts": {
+    "test": "mocha test/runner.js --reporter spec",
+    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+  }
+}
