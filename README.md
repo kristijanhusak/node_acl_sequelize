@@ -1,5 +1,8 @@
 # ACL Sequelize
 
+[![Build Status](https://travis-ci.org/kristijanhusak/node_acl_sequelize.svg)](https://travis-ci.org/kristijanhusak/node_acl_sequelize)
+[![Coverage Status](https://coveralls.io/repos/github/kristijanhusak/node_acl_sequelize/badge.svg)](https://coveralls.io/github/kristijanhusak/node_acl_sequelize)
+
  [node_acl](https://github.com/OptimalBits/node_acl) implementation for [Sequelize](https://github.com/sequelize/sequelize)
 Currently working **only with Postgres**.
 
