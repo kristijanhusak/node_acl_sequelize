@@ -78,12 +78,12 @@ var SequelizeBackend = require('acl-sequelize-backend');
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
-    var options = {};
+    var options = { prefix: 'acl_' };
     return SequelizeBackend.migration.up(queryInterface, Sequelize, options);
   },
 
   down: function (queryInterface, Sequelize) {
-    var options = {};
+    var options = { prefix: 'acl_' };
     return SequelizeBackend.migration.down(queryInterface, Sequelize, options);
   }
 };
@@ -93,6 +93,7 @@ Both `up` and `down` methods accept 3rd parameter `options` which can contain ta
 
 ```javascript
 var options = {
+  prefix: '',                 // Prefix for table names
   meta: 'meta',               // Table name for meta bucket
   parents: 'parents',         // Table name for parents bucket
   permissions: 'permissions', // Table name for permissions bucket
@@ -102,7 +103,7 @@ var options = {
 };
 ```
 
-**NOTE: Make sure that table names provided here match with table names provided to the backend.**
+**NOTE: Make sure that table names and prefix provided here match with table names and prefix provided to the backend.**
 
 It is recommended to just use defaults in order to avoid any issues with naming.
 
