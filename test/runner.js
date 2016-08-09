@@ -10,12 +10,13 @@ function run() {
 	});
 }
 
-var dbUrl = 'postgres://postgres@127.0.0.1:5432/travis_ci_test';
+// var dbUrl = 'postgres://postgres@127.0.0.1:5432/travis_ci_test';
+var dbUrl = 'postgres://postgres:SuperSecure1!@192.168.99.100:5432/squire-development'
 
 describe('Sequelize - Postgres', function () {
   before(function (done) {
-    var self = this
-      , sequelize = require('sequelize')
+    var self = this;
+    var sequelize = require('sequelize');
 
     var seq = new sequelize(dbUrl, {
       logging: false
@@ -32,8 +33,6 @@ describe('Sequelize - Postgres', function () {
   run();
 
   it('properly runs up migration', function() {
-    var seq = new sequelize(dbUrl);
-    var backend = new SequelizeBackend(seq);
     var migration = [];
     var queryInterfaceStub = {
       createTable: function(tableName, schema) {
@@ -43,14 +42,30 @@ describe('Sequelize - Postgres', function () {
 
     var expected = ['meta', 'parents', 'permissions', 'resources', 'roles', 'users'];
 
-    backend.migration.up(queryInterfaceStub, sequelize);
+    SequelizeBackend.migration.up(queryInterfaceStub, sequelize);
+
+    assert.deepEqual(migration, expected);
+  });
+
+  it('allows overriding options in migrations', function() {
+    var migration = [];
+    var queryInterfaceStub = {
+      createTable: function(tableName, schema) {
+        migration.push(tableName);
+      }
+    }
+
+    var expected = ['meta', 'parents_acl', 'permissions', 'resources', 'roles_acl', 'users'];
+
+    SequelizeBackend.migration.up(queryInterfaceStub, sequelize, {
+      roles: 'roles_acl',
+      parents: 'parents_acl'
+    });
 
     assert.deepEqual(migration, expected);
   });
 
   it('properly runs down migration', function() {
-    var seq = new sequelize(dbUrl);
-    var backend = new SequelizeBackend(seq);
     var migration = [];
     var queryInterfaceStub = {
       dropTable: function(tableName, schema) {
@@ -60,7 +75,7 @@ describe('Sequelize - Postgres', function () {
 
     var expected = ['meta', 'parents', 'permissions', 'resources', 'roles', 'users'];
 
-    backend.migration.down(queryInterfaceStub, sequelize);
+    SequelizeBackend.migration.down(queryInterfaceStub, sequelize);
 
     assert.deepEqual(migration, expected);
   });
