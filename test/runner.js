@@ -10,8 +10,7 @@ function run() {
 	});
 }
 
-// var dbUrl = 'postgres://postgres@127.0.0.1:5432/travis_ci_test';
-var dbUrl = 'postgres://postgres:SuperSecure1!@192.168.99.100:5432/squire-development'
+var dbUrl = 'postgres://postgres@127.0.0.1:5432/travis_ci_test';
 
 describe('Sequelize - Postgres', function () {
   before(function (done) {
@@ -40,9 +39,9 @@ describe('Sequelize - Postgres', function () {
       }
     }
 
-    var expected = ['meta', 'parents', 'permissions', 'resources', 'roles', 'users'];
+    var expected = ['acl_meta', 'acl_parents', 'acl_permissions', 'acl_resources', 'acl_roles', 'acl_users'];
 
-    SequelizeBackend.migration.up(queryInterfaceStub, sequelize);
+    SequelizeBackend.migration.up(queryInterfaceStub, sequelize, { prefix: 'acl_' });
 
     assert.deepEqual(migration, expected);
   });
