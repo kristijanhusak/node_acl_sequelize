@@ -1,6 +1,6 @@
 {
   "name": "acl-sequelize-backend",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A Sequelize.js backend for node_acl",
   "keywords": [
     "middleware",
