@@ -1,6 +1,6 @@
 {
   "name": "acl-sequelize-backend",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A Sequelize.js backend for node_acl",
   "keywords": [
     "middleware",
@@ -18,7 +18,6 @@
   "main": "./index.js",
   "dependencies": {
     "async": "^0.9.0",
-    "knex": "0.6.22",
     "lodash": "^2.4.1",
     "sequelize": "^3.23.6",
     "pg": "3.4.0"
