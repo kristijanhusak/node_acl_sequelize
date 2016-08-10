@@ -1,6 +1,6 @@
 {
   "name": "acl-sequelize-backend",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A Sequelize.js backend for node_acl",
   "keywords": [
     "middleware",
@@ -17,17 +17,17 @@
   },
   "main": "./index.js",
   "dependencies": {
-    "async": "^0.9.0",
-    "lodash": "^2.4.1",
-    "sequelize": "^3.23.6",
-    "pg": "3.4.0"
+    "async": "^2.0.1",
+    "lodash": "^4.14.2"
   },
   "devDependencies": {
     "acl": "^0.4.9",
     "chai": "^1.9.1",
     "coveralls": "^2.11.1",
     "istanbul": "^0.3.0",
-    "mocha": "^1.21.3"
+    "mocha": "^1.21.3",
+    "pg": "^6.0.3",
+    "sequelize": "^3.23.6"
   },
   "scripts": {
     "test": "mocha test/runner.js --reporter spec",
